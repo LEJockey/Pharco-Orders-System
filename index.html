@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Pharco-Logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="font-awesome/all.min.css">
+    <link rel="stylesheet" href="bs-css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>PHARCO</title>
+</head>
+<body>
+
+<div class="layer"> 
+
+    <!----------------- Side Bar ---------------->
+
+    <!-- Side Bar Content -->
+    <nav id="sidebar" class="sidebar close">
+
+        <div class="logo-details w-100 d-flex align-items-center">
+            <i class="fa-solid fa-house-medical"></i>
+            <span class='logo-name'>Pharco</span>
+        </div>
+
+        <ul class='sidebar-list list-unstyled h-100 pt-4'>
+
+            <li>
+                <div class='item'>
+                    <a class='link' id="home-sec" >
+                        <!-- <i class="fa-solid fa-house"></i> -->
+                        <i class="fa-solid fa-receipt"></i>
+                        <span class='name'>All Reports</span>
+                    </a>
+                </div>
+
+                <div class='submenu '>
+                    <a class='link submenu-item cursor-pointer' id="home-sec">All Reports</a>
+                </div>
+            </li>
+
+            <li>
+                <div class='item'>
+                    <a class='link' id="add-customer" >
+                        <!-- <i class="fa-solid fa-user-plus"></i> -->
+                        <i class="fa-solid fa-hospital-user"></i>
+                        <span class='name'>New Customer</span>
+                    </a>
+                </div>
+
+                <div class='submenu'>
+                    <a class='link submenu-item cursor-pointer' id="add-customer">New Customer</a>
+                </div>
+            </li>
+
+            <li>
+                <div class='item'>
+                    <a class='link' id="add-product" >
+                        <!-- <i class="fa-solid fa-prescription-bottle-medical"></i> -->
+                        <i class="fa-solid fa-capsules"></i>
+                        <span class='name'>New Product</span>
+                    </a>
+                </div>
+
+                <div class='submenu'>
+                    <a class='link submenu-item cursor-pointer' id="add-product">New Product</a>
+                </div>
+            </li>
+
+            <li class='dropdown'>
+                <div class='item'>
+                    <a>
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                        <span class='name'>Pages</span>
+                    </a>
+                    <i class="fa-solid fa-chevron-down arrow"></i>
+                </div>
+
+                <div class='submenu'>
+                    <a class='link ' id="create-pricelist">Create PriceList </a>
+                    <a class='link ' id="create-order">Create Order</a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+
+
+    <!-- Side Bar Button -->
+    <div class="sidebar-button  z-3">
+        <div class="sidebar-toggle " onclick="handleSidebarToggle()">
+            <i class="fa-solid fa-bars ms-3"></i>
+            <div class="text ms-2">Pharco</div>
+        </div>
+    </div>
+
+
+    <!-- Home Section -->
+    <section class=" content-sec m-2 mb-5 mt-5 pt-5 padd-80 position-relative" id="home-sec">
+        <h1 class="text-center mb-5">Table of All Orders</h1>
+        <div class="px-0 px-md-4">
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th class="rounded-2" scope="col">ID</th>
+                    <th class="rounded-2" scope="col">Customer Name</th>
+                    <th class="d-none d-sm-table-cell rounded-2" scope="col">Price List Name</th>
+                    <th class="rounded-2" scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody id="table-content">
+                
+            </tbody>
+        </table>
+        </div>
+    </section>
+
+    <!-- Add Customer Section -->
+    <section class=" content-sec m-2 mb-5 mt-5 pt-5 padd-80 position-relative" id="add-customer">
+
+        <!-- Title of Section -->
+        <h1 class="text-center pt-5 mb-5">Add New Customer</h1>
+
+        <!-- Form of Section -->
+        <form id="customer-form" class="row g-3 needs-validation d-flex flex-column" novalidate>
+            <div class="col-md-4 mx-auto">
+
+                <label for="cName" class="form-label mb-1">Customer name:</label>
+                <input type="text" class="form-control" id="cName" required>
+
+                <div class="invalid-feedback">
+                    Please, submit required data.
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="cCountry" class="form-label mb-1">Customer Country:</label>
+                <input type="text" class="form-control" id="cCountry" required>
+                
+                <div class="invalid-feedback">
+                    Please, submit required data.
+                </div>
+            </div>
+            
+            <div class="col-md-4 mx-auto">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Register New Customer
+                    </label>
+                    
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <button class="btn btn-outline-warning" onclick="addCustomer()">Submit Data</button>
+            </div>
+        </form>
+
+    </section>
+
+    
+    <!-- Add Product Section -->
+    <section class=" content-sec m-2 mb-5 mt-5 pt-5 padd-80 position-relative" id="add-product">
+
+        <h1 class="text-center pt-5 mb-5">Add New Product</h1>
+
+        <!-- Form of Section -->
+        <form id="product-form" class="row g-3 needs-validation d-flex flex-column" novalidate>
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="pName" class="form-label mb-1">Product name:</label>
+                <input type="text" class="form-control" id="pName" required>
+
+                <div class="invalid-feedback">
+                    Please, submit required data.
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="pDescription" class="form-label mb-1">Product Description:</label>
+                <input type="text" class="form-control" id="pDescription" required>
+                
+                <div class="invalid-feedback">
+                    Please, submit required data.
+                </div>
+            </div>
+
+            <div class="col-md-4 mx-auto">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Add New Product
+                    </label>
+                    
+                    <div class="invalid-feedback">
+                        You must check before adding.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mx-auto">
+                <button class="btn btn-outline-warning" onclick="addProduct()">Add Product</button>
+            </div>
+
+        </form>
+    </section>
+
+
+    <!-- Create Price List  -->
+    <section class=" content-sec m-2 mb-5 mt-5 pt-5 padd-80 position-relative" id="create-pricelist">
+
+        <h1 class="text-center pt-5 mb-5">Add New Price List</h1>
+
+        <!-- Form of Section -->
+        <form id="pricelist-form" class="row g-3 needs-validation d-flex flex-column" novalidate>
+
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="pricelistName" class="form-label mb-1">Price List name:</label>
+                <input class="form-control" id="pricelistInput" list="pricelistName" required>
+                <datalist id="pricelistName">
+                </datalist>
+
+                <div class="invalid-feedback">
+                    Please, submit required data.
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mx-auto">
+                <label for="addproductfordatalist" class="form-label mb-1">Products</label>
+                <select class="form-select" id="addproductfordatalist" required>
+                    <option selected disabled value="">Choose...</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a product.
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="price" class="form-label mb-1">Product Price:</label>
+                <input type="text" class="form-control" id="price" required>
+
+                <div class="invalid-feedback">
+                    Please, Enter the price of this Product.
+                </div>
+
+            </div>
+
+            
+            <div class="col-md-4 mx-auto">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Add New Product
+                    </label>
+                    
+                    <div class="invalid-feedback">
+                        You must check before adding.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mx-auto">
+                <button class="btn btn-outline-warning" onclick="addPriceListDetails()">Add New Product to Price List</button>
+            </div>
+        </form>
+    </section>
+    
+
+    <!-- Create Order -->
+    <section class="content-sec m-2 mb-5 mt-3 pt-5 padd-80 position-relative" id="create-order">
+
+        <h1 class="text-center mb-4">Create Order</h1>
+        
+        <form id="createorder-form" class="row g-3 needs-validation d-flex flex-column" novalidate>
+
+            <div class="col-md-4 mx-auto">
+
+                <label for="orderId" class="form-label mb-1">Order ID:</label>
+                <select class="form-select" id="orderId">
+                    <option selected value="">New Order</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a Customer.
+                </div>
+
+            </div>
+            <!-- Customer Name -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="companyName" class="form-label mb-1">Choose Customer name:</label>
+                <select class="form-select" id="companyName" required>
+                    <option selected disabled value="">Choose...</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a Customer.
+                </div>
+
+            </div>
+
+            <!-- Price List Name -->
+            <div class="col-md-4 mx-auto">
+                <label for="pLName" class="form-label mb-1">Choose Price List name:</label>
+                <select class="form-select" id="pLName" required>
+                    <option selected disabled value="">Choose...</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a Price List.
+                </div>
+
+            </div>
+
+            <!-- Enter Order Date -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="date" class="form-label mb-1">Date:</label>
+                <input type="date" class="form-control" id="date" required>
+
+                <div class="invalid-feedback">
+                    Please, Enter the date of this Order.
+                </div>
+
+            </div>
+
+            <!-- Choose Product of Price List -->
+            <div class="col-md-4 mx-auto">
+                <label for="proName" class="form-label mb-1">Choose Product:</label>
+                <select class="form-select" id="proName" required>
+                    <option selected disabled value="">Choose...</option>
+                </select>
+
+                <div class="invalid-feedback">
+                    Please select a product for this order.
+                </div>
+
+            </div>
+
+            <!-- Product Description -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="proDescription" class="form-label mb-1">Product Description:</label>
+                <input type="text" class="form-control" id="proDescription" readonly disabled required>
+                
+            </div>
+
+            <!-- Product Price -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="proPrice" class="form-label mb-1">Product Price:</label>
+                <input type="text" class="form-control" id="proPrice" readonly disabled required>
+
+            </div>
+
+            <!-- Product Quantity -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="qty" class="form-label mb-1">Product Quantity:</label>
+                <input type="number" class="form-control" id="qty" min="1" required>
+
+                <div class="invalid-feedback">
+                    Please, Enter the price of this Product.
+                </div>
+
+            </div>
+
+            <!-- Total Price -->
+            <div class="col-md-4 mx-auto">
+
+                <label for="totalPrice" class="form-label mb-1">Total Price:</label>
+                <input type="number" class="form-control" id="totalPrice" readonly disabled required>
+
+            </div>
+
+            <!-- Check Box -->
+            <div class="col-md-4 mx-auto">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Create New Order
+                    </label>
+                    
+                    <div class="invalid-feedback">
+                        You must check before Creating a New Order.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Form Button -->
+            <div class="col-md-4 mx-auto">
+                <button class="btn btn-outline-warning" onclick="createNewOrder()">Add New Product to Price List</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Order Details -->
+    <section class="content-sec m-2 mb-5 mt-5 pt-5 padd-80 " id="order-details">
+
+        <h1 class="text-center pt-5 mb-5">Order Details</h1>
+        
+        <div class="px-0 px-md-4">
+            <!-- Header Table -->
+        <table class="table table-bordered mb-5 ">
+            
+            <tbody>
+                <tr class="rounded-2 border-0">
+                    <th class="rounded-2 border-0">
+                            Order ID
+                    </th>
+                    <td class="rounded-2 border-0"  id="order-details-id">
+                                
+                    </td>
+                    <th class="rounded-2 border-0">
+                            Customer Name
+                    </th>
+                    <td class="rounded-2 border-0"  id="order-details-customerName">
+                            
+                    </td>
+                </tr>
+                <tr class="rounded-2 ">
+                    <th class="rounded-2 border-0">
+                            Price List 
+                    </th>
+                    <td class="rounded-2 border-0" id="order-details-priceList">
+                                
+                    </td>
+                    <th class="rounded-2 border-0">
+                            Date
+                    </th>
+                    <td class="rounded-2 border-0"  id="order-details-date"> 
+                            
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+            <!-- Lines Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Product 
+                    </th>
+                    <th>
+                        Description 
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Total Price
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody id="order-products">
+                
+            </tbody>
+
+        </table>
+        
+        </div>
+        </div>
+    </section> 
+
+</div>
+
+    <script src="https://kit.fontawesome.com/e1233f4482.js" crossorigin="anonymous"></script>
+    <script src="bs-js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

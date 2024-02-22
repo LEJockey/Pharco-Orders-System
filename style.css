@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Cairo:wght@300;400&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700;1,800&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --main-dark-color: #11101d;
+    --light-dark-color: #1d1b31;
+    --yellow-color:#f8931f;
+    --white-color: #fff;
+}
+
+::selection {
+    background: var(--yellow-color);
+}
+
+/* ReUsable Code */
+i {
+    display: inline-block;
+    color: var(--yellow-color) !important;
+}
+
+
+a{
+    cursor: pointer;
+    text-decoration: none !important ;
+    color: var(--white-color) !important;
+    transition: all .3s ease;
+}
+
+a:hover {
+    color: var(--yellow-color) !important;
+}
+
+.hovering:hover{
+    color: var(--yellow-color) !important;
+}
+
+h1{
+    font-weight: 600 !important;
+    color: var(--main-dark-color) !important;
+}
+
+form label{
+    color: var(--main-dark-color) !important;
+}
+
+table{
+    --bs-table-bg: transparent !important;
+}
+
+th{
+    opacity: .9;
+    color: var(--yellow-color) !important;
+    background-color: var(--light-dark-color) !important;
+}
+
+th, tr{
+    text-align: center !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+.no-cursor{
+    cursor:default;
+}
+
+.layer {
+    min-height: 100vh;
+    position: relative;
+}
+.layer::before{
+    content: '';
+    background-image: url(../PharcoTaskPHP/Pharco-BG.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .1;
+}
+
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--yellow-color) !important;
+    box-shadow: 0 0 0 0.05rem var(--yellow-color) !important;
+}
+
+/* Adjust of Content Section */
+.padd-80 {
+    padding-left: 80px;
+    transition: padding 0.5s;
+}
+
+.padd-260 {
+    padding-left: 260px;
+    transition: padding 0.5s;
+}
+
+
+/* Adjust of Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background-color: var(--main-dark-color);
+    z-index: 999;
+    transition: all .5s ease;
+}
+
+.sidebar.close {
+    width: 78px;
+}
+
+/* Design Logo (Icon & Name) */
+
+.sidebar .logo-details {
+    height: 60px;
+}
+
+.sidebar .logo-details i {
+    font-size: 1.5rem;
+    min-width: 78px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.sidebar .logo-details .logo-name {
+    font-size: 1.5rem;
+    font-weight: 600 ;
+    transition: .3s ease;
+    transition-delay: .2s;
+    color: var(--yellow-color);
+}
+
+/* Design of Sidebar List & items */
+
+.sidebar-list {
+    overflow: auto;
+}
+
+.sidebar-list::-webkit-scrollbar{
+    display: none;
+}
+
+.sidebar-list li {
+    transition: all .5s ease;
+}
+
+.sidebar-list li:hover{
+    background-color: var(--light-dark-color);
+}
+
+.sidebar-list li .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+.sidebar-list li.active .item {
+    background-color: var(--light-dark-color);
+}
+
+.sidebar-list li .item .link {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-list li .item i{
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.25rem;
+}
+
+.sidebar-list li .item .name {
+    font-size: 1.125rem;
+    transition: all .5s ease;
+}
+
+.sidebar-list li:hover .item .name {
+    color: var(--yellow-color);
+}
+
+
+.sidebar-list li .arrow{
+    transition: all .5s ease ;
+}
+
+.sidebar-list li.active .arrow{
+    transform: rotate(180deg) 
+}
+
+/* Design of submenu */
+
+.sidebar-list li .submenu {
+    display: none;
+    transition: all .5s ease;
+}
+
+.sidebar-list li.dropdown.active .submenu{
+    display: flex;
+    flex-direction: column;
+    padding: 6px 6px 14px 80px;
+    background-color: var(--light-dark-color);
+}
+
+.sidebar-list li .submenu .link {
+    padding: .3125rem 0;
+    transition: all .5s ease;
+}
+
+.sidebar-list li .submenu-item {
+    display: none;
+}
+
+/* Handle Submenu when sidebar closing  */
+.sidebar.close .logo-name, .sidebar.close .item .name, .sidebar.close .item .arrow{
+    display: none;
+}
+
+.sidebar.close .sidebar-list {
+    overflow: visible;
+}
+
+.sidebar.close .sidebar-list li {
+    position: relative;
+}
+
+.sidebar.close .sidebar-list li .submenu{
+    position: absolute;
+    left: 90%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: .5249rem 1.25rem;
+    border-radius: 0 .375rem .375rem 0;
+    width: max-content;
+    height: fit-content;
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+.sidebar.close .sidebar-list li:hover .submenu{
+    left: 100%;
+    opacity: 1;
+    background-color: var(--light-dark-color);
+}
+
+.sidebar.close .sidebar-list li .submenu-item{
+    display: block;
+}
+
+
+
+/* Handle Sidebar open & close button */
+
+.sidebar-button {
+    position: relative;
+    left: 260px;
+    color: var(--main-dark-color);
+    width: fit-content;
+    transition: all .5s ease;
+}
+
+.sidebar.close ~ .sidebar-button{
+    left: 78px;
+}
+
+
+.sidebar-button .sidebar-toggle{
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar-button .sidebar-toggle i {
+    font-size: 2rem;
+}
+.sidebar-button .text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--main-dark-color);
+}
+
+
+/* Content Section */
+@media screen and (max-width: 768px) {
+    .sidebar-button{
+        display: none;
+    }
+    
+}
