@@ -462,15 +462,17 @@ function showOrder(id){
             document.getElementById('order-details-customerName').textContent = data.customerName
             document.getElementById('order-details-priceList').textContent = data.priceListName
             document.getElementById('order-details-date').textContent = data.date
+            
 
             let orderProductsTable = ``
+            let totalOrderPrice = 0
             for (let i = 0; i < orderProducts.length; i++) {
                 orderProductsTable += `
                 <tr class="rounded-2">
                     <th class="rounded-2 border-0" id="order-details-product">
                         ${orderProducts[i].name}
                     </th>
-                    <td class="rounded-2 border-0"  id="order-details-desc">
+                    <td class="rounded-2 border-0 d-none d-md-table-cell"  id="order-details-desc">
                         ${orderProducts[i].description}
                     </td>
                     <td class="rounded-2 border-0" id="order-details-price">
@@ -479,12 +481,14 @@ function showOrder(id){
                     <td class="rounded-2 border-0"  id="order-details-qty">
                         ${orderProducts[i].qty}
                     </td>
-                    <td class="rounded-2 border-0"  id="order-details-total">
+                    <td class="rounded-2 border-0 d-none d-sm-table-cell"  id="order-details-total">
                         ${orderProducts[i].totalprice}
                     </td>
                 </tr>    `
+                totalOrderPrice += orderProducts[i].totalprice
             }
             document.getElementById('order-products').innerHTML = orderProductsTable
+            document.getElementById('totalOrderPrice').innerHTML = totalOrderPrice
         }
     };
     let params =`id=${id}&className=ordersales&funName=showorder`;

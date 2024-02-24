@@ -308,3 +308,7 @@ th, tr{
     }
     
 }
+
+#totalOrderPrice{
+    font-weight: 700;
+}

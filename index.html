@@ -105,7 +105,9 @@
                     <th class="rounded-2" scope="col">ID</th>
                     <th class="rounded-2" scope="col">Customer Name</th>
                     <th class="d-none d-sm-table-cell rounded-2" scope="col">Price List Name</th>
-                    <th class="rounded-2" scope="col">Date</th>
+                    <th class="rounded-2" scope="col"><div>
+                        Date
+                    </div></th>
                 </tr>
             </thead>
             <tbody id="table-content">
@@ -450,13 +452,13 @@
         </table>
 
             <!-- Lines Table -->
-        <table class="table table-bordered">
+        <table class="table table-bordered mb-5">
             <thead>
                 <tr>
                     <th>
                         Product 
                     </th>
-                    <th>
+                    <th class="d-none d-md-table-cell">
                         Description 
                     </th>
                     <th>
@@ -465,7 +467,7 @@
                     <th>
                         Quantity
                     </th>
-                    <th>
+                    <th class="d-none d-sm-table-cell">
                         Total Price
                     </th>
                 </tr>
@@ -475,6 +477,17 @@
                 
             </tbody>
 
+        </table>
+
+        <table class="table table-borderless">
+            <tr>
+                <th class="rounded-2">
+                    Total Order Price 
+                </th>
+                <td id="totalOrderPrice">
+                    
+                </td>
+            </tr>
         </table>
         
         </div>
